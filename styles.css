@@ -809,6 +809,41 @@ nav.main-nav .sub-menu a {
   text-align: left;
 }
 
+/* ---------- The Education Crisis ---------- */
+/* Four compact stat cards spanning the full width, beneath copy and image */
+.stat-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 44px;
+}
+@media (max-width: 900px) { .stat-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .stat-cards { grid-template-columns: 1fr; } }
+.stat-card {
+  background: var(--green-900);
+  border-radius: var(--radius);
+  padding: 22px 22px 24px;
+  border-bottom: 4px solid var(--saffron);
+}
+.stat-card .n {
+  font-family: 'Merriweather', serif;
+  font-size: clamp(30px, 3.4vw, 38px);
+  line-height: 1.05;
+  color: var(--marigold);
+  margin-bottom: 6px;
+}
+.stat-card p { color: #cfe3d5; font-size: 14.5px; line-height: 1.5; }
+.stat-card p strong { color: #fff; }
+
+.stat-footnote {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+.stat-footnote strong { color: var(--green-900); font-size: 17px; }
+
 /* ---------- Photo row (side-by-side photographs) ---------- */
 .photo-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 @media (max-width: 1000px) { .photo-row { grid-template-columns: repeat(2, 1fr); } }
@@ -835,6 +870,68 @@ nav.main-nav .sub-menu a {
   color: var(--muted);
   border-top: 3px solid var(--green-100);
   flex: 1;
+}
+
+/* Two-up variant for wide/panoramic shots — a 4:3 crop would cut most of
+   the width off a 2.5:1 photograph */
+.photo-row.wide { grid-template-columns: repeat(2, 1fr); gap: 22px; }
+@media (max-width: 760px) { .photo-row.wide { grid-template-columns: 1fr; } }
+.photo-row.wide img { aspect-ratio: 2 / 1; }
+
+/* Three-up variant at 3:2 — matches the camera's native ratio, so no crop */
+.photo-row.trio { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 860px) { .photo-row.trio { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .photo-row.trio { grid-template-columns: 1fr; } }
+.photo-row.trio img { aspect-ratio: 3 / 2; }
+
+/* ---------- Data tables (results, staff, disclosure) ---------- */
+.table-wrap { overflow-x: auto; border-radius: var(--radius); box-shadow: var(--shadow); }
+table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  font-size: 15.5px;
+  min-width: 480px;
+}
+table.data-table caption {
+  caption-side: bottom;
+  text-align: left;
+  padding: 12px 18px 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+table.data-table th {
+  background: var(--green-900);
+  color: #fff;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  padding: 13px 18px;
+}
+table.data-table td { padding: 12px 18px; border-bottom: 1px solid #eee7d9; color: #3c4438; }
+table.data-table tbody tr:last-child td { border-bottom: none; }
+table.data-table tbody tr:nth-child(even) { background: #fbf9f4; }
+table.data-table td:first-child { font-weight: 600; color: var(--green-900); }
+table.data-table .pct { font-weight: 700; color: var(--green-700); }
+table.data-table .pct.full { color: var(--saffron-dark); }
+
+/* Single full-width photograph, shown at its own proportions */
+.photo-full {
+  margin: 34px 0 0;
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.photo-full img { width: 100%; height: auto; display: block; }
+.photo-full figcaption {
+  padding: 13px 16px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--muted);
+  border-top: 3px solid var(--green-100);
 }
 
 /* ---------- Social + QR footer strip ---------- */
